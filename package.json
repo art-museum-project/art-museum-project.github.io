@@ -1,6 +1,6 @@
 {
-  "homepage": "http://humpty53.github.io/",
-  "name": "art-museum",
+  "homepage": "https://art-museum-project.github.io/",
+  "name": "art-museum-project",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
