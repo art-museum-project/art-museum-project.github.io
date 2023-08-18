@@ -30,9 +30,16 @@ per message).
 
 ## Development Information
 
-This project was developed using these tools:
+This project was developed using these tools:  
 
-Create React App
-Stream Chat API
-Supabase Database Platform
-Render Web Services
+### Coding Languages
+
+JavaScript  
+CSS  
+HTML5  
+
+### Frontend/Backend Services
+Create React App  
+Stream Chat API  
+Supabase Database Platform  
+Render Web Services  
