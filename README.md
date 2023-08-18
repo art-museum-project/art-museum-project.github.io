@@ -32,7 +32,7 @@ per message).
 
 This project was developed using these tools:
 
-Create React App
-Stream Chat API
-Supabase Database Platform
-Render Web Services
+Create React App  
+Stream Chat API  
+Supabase Database Platform  
+Render Web Services  
