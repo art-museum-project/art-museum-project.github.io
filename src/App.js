@@ -16,13 +16,11 @@ export default function Home() {
       setSession(session);
     });
   }, []);
-  return (
-    <React.Fragment>
-      {!session ? (
-        <Auth />
-      ) : (
-        <ChatPage session={session} key={session.user.id} />
-      )}
-    </React.Fragment>
-  );
+
+      if(!session) {
+        return (<Auth supabaseClient={supabase}/>)
+      } else {
+        return (<ChatPage session={session} key={session.user.id}/>)
+      }
+
 };

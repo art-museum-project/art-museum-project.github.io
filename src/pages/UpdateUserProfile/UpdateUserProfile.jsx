@@ -59,8 +59,8 @@ export default function UpdateUserProfile({ session, setChatUsername }) {
   return (
     <div className={Styles.Container}>
       <div className={Styles.FormWrap}>
-        <h1 className={Styles.Heading}>Update Profile</h1>
-        <p className={Styles.Description}>This cannot be changed</p>
+        <h1 className={Styles.Heading}>Please choose a username!</h1>
+        <p className={Styles.Description}>This cannot be changed later, so choose wisely.</p>
         <div className={Styles.InputWrapper}>
           <label htmlFor='email'>Email</label>
           <input

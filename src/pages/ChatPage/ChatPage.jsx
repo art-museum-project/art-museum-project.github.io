@@ -79,7 +79,7 @@ export const ChatPage = ({ session }) => {
         const channel = chatClient.channel('messaging', 'art-chat', {
           name: "ArtMakers Inc.",
         })
-
+        await channel.watch;
         // 5. Add the current user to the channel members
         channel.addMembers([username]);
         setChannel(channel)
@@ -125,6 +125,7 @@ export const ChatPage = ({ session }) => {
           name: "Image Board",
         })
 
+        await channel2.watch()
         // 5. Add the current user to the channel members
         channel2.addMembers([username]);
         setChannel2(channel2)
@@ -194,7 +195,7 @@ export const ChatPage = ({ session }) => {
       </Channel>
       <Channel channel = {channel2} EmojiIcon={CustomEmoji} EmojiPicker={CustomEmoji}>
         <Window >
-          <MessageList hideDeletedMessages='true'/>
+          <MessageList hideDeletedMessages='true' messageActions={ ["edit", "delete", "react", "reply"] }/>
           <MessageInput disabled='true'/>
         </Window>
         <Thread />
