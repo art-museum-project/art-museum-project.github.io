@@ -33,7 +33,6 @@ export const ChatPage = ({ session }) => {
         let { data, error, status } = await supabase
           .from("profiles")
           .select(`username`)
-          .eq("id", user.id)
           .single();
         if (error && status !== 406) {
           throw error;
@@ -184,24 +183,22 @@ export const ChatPage = ({ session }) => {
      }
 
     return (
-    <React.Fragment>
     <Chat client={client} theme="messaging dark">
       <Channel channel = {channel}>
         <Window>
           <ChannelHeader />
-          <MessageList hideDeletedMessages='true'/>
+          <MessageList hideDeletedMessages='true' messageActions={ ["edit", "delete", "quote", "react", "reply"] }/>
           <MessageInput />
         </Window>
       </Channel>
       <Channel channel = {channel2} EmojiIcon={CustomEmoji} EmojiPicker={CustomEmoji}>
         <Window >
           <MessageList hideDeletedMessages='true' messageActions={ ["edit", "delete", "react", "reply"] }/>
-          <MessageInput disabled='true'/>
+          <MessageInput disabled={true}/>
         </Window>
         <Thread />
       </Channel>
     </Chat>
-    </React.Fragment>
     )
 }
 

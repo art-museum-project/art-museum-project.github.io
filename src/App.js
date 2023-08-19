@@ -18,9 +18,9 @@ export default function Home() {
   }, []);
 
       if(!session) {
-        return (<Auth supabaseClient={supabase}/>)
+        return (<React.Fragment><Auth supabaseClient={supabase}/></React.Fragment>)
       } else {
-        return (<ChatPage session={session} key={session.user.id}/>)
+        return (<React.Fragment><ChatPage session={session} /></React.Fragment>)
       }
 
 };
