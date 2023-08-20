@@ -65,7 +65,7 @@ export default function UpdateUserProfile({ session, setChatUsername }) {
       <div className={Styles.FormWrap}>
         <h1 className={Styles.Heading}>Please choose a username!</h1>
         <p className={Styles.Description}>This cannot be changed later, so choose wisely. <br />
-        Username Characters Allowed: a-z, 0-9, @, _, -</p>
+        Username Characters Allowed: a-z, A-Z, 0-9, @, _, -</p>
         <div className={Styles.InputWrapper}>
           <label htmlFor='email'>Email</label>
           <input

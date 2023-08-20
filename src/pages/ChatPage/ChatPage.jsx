@@ -34,6 +34,7 @@ export const ChatPage = ({ session }) => {
         let { data, error, status } = await supabase
           .from("profiles")
           .select(`username`)
+          .eq("id", user.id)
           .single();
         if (error && status !== 406) {
           throw error;

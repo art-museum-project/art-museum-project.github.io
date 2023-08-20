@@ -2,7 +2,8 @@
     max-height: 100vh;
     display: inline-block;
     vertical-align: top;
-    min-width: 50%;
+    min-width: 30%;
+    width: 50%;
 }
 
 .LoadingBars {
