@@ -11,6 +11,7 @@ export default function UpdateUserProfile({ session, setChatUsername }) {
     getProfile();
   }, [session]);
 
+  // Initial user setup (acquiring data from Supabase server)
   async function getProfile() {
     try {
       setLoading(true);
@@ -18,7 +19,8 @@ export default function UpdateUserProfile({ session, setChatUsername }) {
       let { data, error, status } = await supabase
         .from("profiles")
         .select(`username`)
-        .eq("id", user.id)
+        .eq("id", user.id) // Appears to be the source of the undefined UUID error,
+        // but required to login users properly.
         .single();
       if (error && status !== 406) {
         throw error;
@@ -33,6 +35,8 @@ export default function UpdateUserProfile({ session, setChatUsername }) {
     }
   }
 
+  // This function handles the addition of a username to a designated user,
+  // establishing it in the Supabase and Stream Chat databases.
   async function updateProfile({ username }) {
     try {
       setLoading(true);
@@ -60,7 +64,8 @@ export default function UpdateUserProfile({ session, setChatUsername }) {
     <div className={Styles.Container}>
       <div className={Styles.FormWrap}>
         <h1 className={Styles.Heading}>Please choose a username!</h1>
-        <p className={Styles.Description}>This cannot be changed later, so choose wisely.</p>
+        <p className={Styles.Description}>This cannot be changed later, so choose wisely. <br />
+        Username Characters Allowed: a-z, 0-9, @, _, -</p>
         <div className={Styles.InputWrapper}>
           <label htmlFor='email'>Email</label>
           <input

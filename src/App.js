@@ -10,6 +10,8 @@ export default function Home() {
   // keep track of the user's current state
   const [session, setSession] = useState(null);
 
+  // Use Supabase Authentication services to acquire session from an access token, 
+  // usually provided by using an email magic link
   useEffect(() => {
     setSession(supabase.auth.getSession());
     supabase.auth.onAuthStateChange((_event, session) => {

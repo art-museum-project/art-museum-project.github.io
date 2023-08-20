@@ -1,19 +1,19 @@
 // pages/Auth.jsx
 import { useState } from "react";
-// importing the supabase helper
 import { supabase } from "./../../supabaseClient";
-// import styles
 import Styles from "./../../main.module.css";
+
+// This function handles the authentication service, sending a magic link to
+// the designated email.
 export default function Auth() {
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
-  // function to handle the login and signup
   const handleAuthentication = async (email) => {
     try {
       setLoading(true);
       const { error } = await supabase.auth.signInWithOtp({ email });
       if (error) throw error;
-      alert("Check your email for the magic link!");
+      alert("Magic link sent! Please check your email for a message from noreply@mail.app.supabase.io, and close this page afterwards.");
     } catch (error) {
       alert(error.error_description || error.message);
     } finally {

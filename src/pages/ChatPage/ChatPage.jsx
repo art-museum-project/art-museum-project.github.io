@@ -20,11 +20,12 @@ import './../../style.css';
 const apiKey = process.env.REACT_APP_STREAM_API_KEY
 
 export const ChatPage = ({ session }) => {
-  // keep track of chat instance state
+  // Keep track of chat instance state
   const [client, setClient] = useState(null);
   const [username, setUsername] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  // Initial user setup (acquiring data from Supabase server)
   useEffect(() => {
     async function getProfile() {
       try {
@@ -46,13 +47,14 @@ export const ChatPage = ({ session }) => {
         setLoading(false);
       }
     }
-    // if the user is authenticated by the time the page loads, get their username
+    // If the user is authenticated by the time the page loads, get their username
     // session from Supabase
     if (session) {
       getProfile();
     }
   }, []);
 
+  // The next two useEffect() functions handle the initialization of the app's channels.
   const [channel, setChannel] = useState(null);
 
     useEffect(() => {
@@ -145,6 +147,7 @@ export const ChatPage = ({ session }) => {
 
     }, [username])
 
+    // Display loading bars if channel isn't initialized yet
     if (username && (!client || !channel)) {
       return <div className= {"LoadingBars"}>
       <ReactLoading
@@ -156,6 +159,7 @@ export const ChatPage = ({ session }) => {
       </div>;
     }
 
+    // Display loading bars during Supabase authentication check
     if (loading) {
       return <div className = {"LoadingBars"}>
       <ReactLoading
@@ -167,6 +171,7 @@ export const ChatPage = ({ session }) => {
       </div>;
     }
 
+    // If email doesn't have an associated username, redirect user to setup page
     const noUsername = !username;
     if (noUsername) {
       return (
@@ -178,10 +183,12 @@ export const ChatPage = ({ session }) => {
       );
     }
 
+    // Custom object to disable the use of text emojis in image board channel
      const CustomEmoji = () => {
       return null;
      }
 
+    // This return function tells the application how its chat interface should be structured
     return (
     <Chat client={client} theme="messaging dark">
       <Channel channel = {channel}>
