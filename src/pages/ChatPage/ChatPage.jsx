@@ -34,7 +34,9 @@ export const ChatPage = ({ session }) => {
         let { data, error, status } = await supabase
           .from("profiles")
           .select(`username`)
-          .eq("id", user.id)
+          .eq("id", user.id) // Cause of "Cannot read properties of null (reading 'id')",
+          // required to send users directly to chat page when logged in (it forces the user
+          // to set up their username every time if removed)
           .single();
         if (error && status !== 406) {
           throw error;

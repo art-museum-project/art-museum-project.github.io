@@ -20,7 +20,7 @@ export default function UpdateUserProfile({ session, setChatUsername }) {
         .from("profiles")
         .select(`username`)
         .eq("id", user.id) // Appears to be the source of the undefined UUID error,
-        // but required to login users properly.
+        // but is required to properly register users.
         .single();
       if (error && status !== 406) {
         throw error;
